@@ -1,16 +1,6 @@
-import { useEffect } from 'react';
 import { checkCoordinates } from './gameplay';
 
-function SelectionMenu (props) {
-    const getCoords = props.coords;
-    const selectionMenu = document.querySelector('.selection-menu');
-
-    useEffect(() => {
-    if (selectionMenu !== null) {
-        selectionMenu.style.left = getCoords[0] - 180 + 'px';
-        selectionMenu.style.top = getCoords[1] - 225 + 'px';
-    }
-    },);
+function SelectionMenu () {
 
     return (
         <div className="selection-menu">

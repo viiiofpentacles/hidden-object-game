@@ -18,6 +18,11 @@
     padding: 0.5rem;
 }
 
+.current-menu-coords {
+    top: 0;
+    left: 0;
+}
+
 .selection-option {
     padding: 0.2rem;
 }

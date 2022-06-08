@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { retrieveImage } from './firebase';
 import { createTargetBox } from './gameplay';
 import SelectionMenu from './SelectionMenu';
@@ -13,7 +13,7 @@ function Game () {
         imageContainer.style.pointerEvents = 'all';
     }
 
-    function handleClick(event) {
+    function handleClick (event) {
         const clickTarget = event.target;
         if (clickTarget.tagName === 'IMG') {
         const xCoord = event.pageX;
@@ -23,6 +23,16 @@ function Game () {
         setShowMenu(true);
         }
     }
+
+    useEffect(() => {
+        const menuXcoord = currentCoords[0] - 180 + 'px';
+        const menuYCoord = currentCoords[1] - 225 + 'px';
+        const selectionMenu = document.querySelector('.selection-menu');
+        if (selectionMenu !== null) {
+            selectionMenu.style.left = menuXcoord;
+            selectionMenu.style.top = menuYCoord;
+        }
+    },[currentCoords])
 
     retrieveImage();
 
@@ -46,7 +56,7 @@ function Game () {
             </div>
             <div className="image-container" onClick={handleClick}>
                 {showMenu === true &&
-                <SelectionMenu coords={currentCoords} />
+                <SelectionMenu />
                 }    
                 <img id="loaded-image" alt="The Last Judgment by Michalangelo" /> 
             </div>

@@ -1,7 +1,12 @@
+import { useState } from 'react';
 import { retrieveImage } from './firebase';
-import { createTargetBox, displaySelectionMenu } from './gameplay';
+import { createTargetBox } from './gameplay';
+import SelectionMenu from './SelectionMenu';
 
 function Game () {
+    const [showMenu, setShowMenu] = useState(false);
+    const [currentCoords, setCurrentCoords] = useState([0, 0]);
+
     function handleBegin (event) {
         event.target.disabled = 'true';
         const imageContainer = document.querySelector('.image-container');
@@ -13,8 +18,9 @@ function Game () {
         if (clickTarget.tagName === 'IMG') {
         const xCoord = event.pageX;
         const yCoord = event.pageY;
+        setCurrentCoords([xCoord, yCoord]);
         createTargetBox(xCoord, yCoord);
-        //selection box popup
+        setShowMenu(true);
         }
     }
 
@@ -38,7 +44,10 @@ function Game () {
                     </div>
                 </div>
             </div>
-            <div className="image-container" onClick={handleClick}>       
+            <div className="image-container" onClick={handleClick}>
+                {showMenu === true &&
+                <SelectionMenu coords={currentCoords} />
+                }    
                 <img id="loaded-image" alt="The Last Judgment by Michalangelo" /> 
             </div>
         </main>

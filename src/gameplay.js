@@ -13,11 +13,7 @@ function createTargetBox (x, y) {
     imageContainer.appendChild(targetBox);
 }
 
-function displaySelectionMenu (x, y) {
-    
-}
-
 function checkCoordinates (x , y) {
 }
 
-export { createTargetBox, displaySelectionMenu, checkCoordinates };
+export { createTargetBox, checkCoordinates };

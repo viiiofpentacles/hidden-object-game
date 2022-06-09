@@ -56,7 +56,7 @@ function Game () {
             </div>
             <div className="image-container" onClick={handleClick}>
                 {showMenu === true &&
-                <SelectionMenu />
+                <SelectionMenu coords={currentCoords} />
                 }    
                 <img id="loaded-image" alt="The Last Judgment by Michalangelo" /> 
             </div>

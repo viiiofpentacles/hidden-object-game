@@ -1,3 +1,5 @@
+import { findCoords } from './firebase';
+
 function createTargetBox (x, y) {
     const prevTargetBox = document.querySelector('.target-box');
     if (prevTargetBox !== null) {
@@ -13,7 +15,13 @@ function createTargetBox (x, y) {
     imageContainer.appendChild(targetBox);
 }
 
-function checkCoordinates (x , y) {
+async function checkCoordinates (x , y, person) {
+    const targetPerson = await findCoords(person);
+    if ((x >= targetPerson.topLeftX) && (x <= targetPerson.bottomRightX)) {
+        console.log('you got it right!');
+    } else {
+        console.log('You got it wrong!');
+    }
 }
 
 export { createTargetBox, checkCoordinates };

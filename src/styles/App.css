@@ -4,6 +4,10 @@
     pointer-events: none;
 }
 
+.feedback-container {
+    height: 1.5rem;
+}
+
 .target-box {
     border: 4px solid rgba(251, 255, 0, 0.959);
     width: 40px;

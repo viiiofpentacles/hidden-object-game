@@ -18,9 +18,9 @@ function createTargetBox (x, y) {
 async function checkCoordinates (x , y, person) {
     const targetPerson = await findCoords(person);
     if ((x >= targetPerson.topLeftX) && (x <= targetPerson.bottomRightX)) {
-        console.log('you got it right!');
+        return 'correct';
     } else {
-        console.log('You got it wrong!');
+        return 'wrong';
     }
 }
 

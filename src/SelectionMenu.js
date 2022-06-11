@@ -1,13 +1,26 @@
 import { checkCoordinates } from './gameplay';
 
 function SelectionMenu (props) {
-    function handleClickCheckCoords (e) {
+    async function handleClickCheckCoords (e) {
+        let result;
+        let person;
         if (e.target.textContent === 'Michelangelo') {
-            checkCoordinates(props.coords[0], props.coords[1], 'michelangelo');
+            result = await checkCoordinates(props.coords[0], props.coords[1], 'michelangelo');
+            person = 'michelangelo';
         } else if (e.target.textContent === 'St. Sebastian') {
-            checkCoordinates(props.coords[0], props.coords[1], 'st. sebastian');
+            result = await checkCoordinates(props.coords[0], props.coords[1], 'st. sebastian');
+            person = 'st. sebastian';
         } else {
-            checkCoordinates(props.coords[0], props.coords[1], 'minos');
+            result = await checkCoordinates(props.coords[0], props.coords[1], 'minos');
+            person = 'minos';
+        }
+        props.removeBoxes();
+        const feedback = document.querySelector('.feedback-container');
+        if (result === 'correct') {
+            props.changeFoundObjectState(person);
+            feedback.textContent = 'You found ' + person + '!';
+        } else {
+            feedback.textContent = 'That isn\'t ' + person + '!';
         }
     }
 

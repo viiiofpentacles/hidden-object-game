@@ -12,7 +12,9 @@ function retrieveImage() {
   getDownloadURL(ref(storage, 'gs://hidden-object-game-3372e.appspot.com/930px-Last_Judgement_(Michelangelo).jpg'))
   .then((url) => {
     const img = document.getElementById('loaded-image');
+    if (img) {
     img.setAttribute('src', url);
+  };
   })
   .catch((error) => {
     return null;

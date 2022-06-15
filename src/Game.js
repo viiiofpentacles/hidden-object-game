@@ -24,11 +24,12 @@ function Game () {
     function handleClick (event) {
         const clickTarget = event.target;
         if (clickTarget.tagName === 'IMG') {
-        const xCoord = event.pageX;
-        const yCoord = event.pageY;
+        const xCoord = event.nativeEvent.offsetX;
+        const yCoord = event.nativeEvent.offsetY;
         setCurrentCoords([xCoord, yCoord]);
         createTargetBox(xCoord, yCoord);
         setShowMenu(true);
+        console.log(xCoord, yCoord)
         }
     }
 
@@ -57,8 +58,8 @@ function Game () {
     }, [foundObjects])
 
     useEffect(() => {
-        const menuXcoord = currentCoords[0] - 180 + 'px';
-        const menuYCoord = currentCoords[1] - 225 + 'px';
+        const menuXcoord = currentCoords[0] + 50 + 'px';
+        const menuYCoord = currentCoords[1] - 50 + 'px';
         const selectionMenu = document.querySelector('.selection-menu');
         if (selectionMenu !== null) {
             selectionMenu.style.left = menuXcoord;

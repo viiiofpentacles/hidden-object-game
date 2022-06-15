@@ -17,7 +17,7 @@ function retrieveImage() {
   };
   })
   .catch((error) => {
-    return null;
+    return error;
   });
 }
 

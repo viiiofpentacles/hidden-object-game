@@ -6,10 +6,8 @@ function createTargetBox (x, y) {
     prevTargetBox.remove();
     };
     const targetBox = document.createElement('div');
-    const image = document.getElementById('loaded-image');
-    const imageCoords = image.getBoundingClientRect();
-    targetBox.style.left = x - imageCoords.x - (22) + 'px';
-    targetBox.style.top = y - 200 - (32) + 'px';
+    targetBox.style.left = x - 20 + 'px';
+    targetBox.style.top = y - 35 + 'px';
     targetBox.classList.add('target-box');
     const imageContainer = document.querySelector('.image-container');
     imageContainer.appendChild(targetBox);
@@ -17,7 +15,8 @@ function createTargetBox (x, y) {
 
 async function checkCoordinates (x , y, person) {
     const targetPerson = await findCoords(person);
-    if ((x >= targetPerson.topLeftX) && (x <= targetPerson.bottomRightX)) {
+    if ((x >= targetPerson.topLeftX) && (x <= targetPerson.bottomRightX) &&
+        (y >= targetPerson.topLeftY && y <= targetPerson.bottomRightY)) {
         return 'correct';
     } else {
         return 'wrong';

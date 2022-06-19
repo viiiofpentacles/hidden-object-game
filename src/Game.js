@@ -8,7 +8,7 @@ function Game () {
     const [showMenu, setShowMenu] = useState(false);
     const [currentCoords, setCurrentCoords] = useState([0, 0]);
     const [begin, setBegin] = useState(false);
-    const [timer, setTimer] = useState(0); //to start timer when begin button is clicked. timer stops if all found
+    const [timer, setTimer] = useState(0);
     const [foundObjects, setFoundObjects] = useState({
             'michelangelo': false,
             'st. sebastian': false,
@@ -69,7 +69,7 @@ function Game () {
         if (resultArray.indexOf(false) === -1) {
             const img = document.getElementById('loaded-image');
             img.setAttribute('src', '');
-            setGameOver(true); //setgameover, which stops timer and opens up scoreboard
+            setGameOver(true); //setgameover, which opens up scoreboard
             setBegin(false); //stops timer
         }
     }, [foundObjects])
@@ -116,7 +116,7 @@ function Game () {
             </div>
             }
             {gameOver === true &&
-            <Scoreboard />
+            <Scoreboard time={timer}/>
             }
         </main>
     )

@@ -1,9 +1,10 @@
-import { retrieveScoreboard } from "./firebase";
+import { retrieveScoreboard, writeToScoreboard } from "./firebase";
 import { useState, useEffect } from 'react';
 
 
 function Scoreboard (props) {
     const [scoreboard, setScoreboard] = useState(null);
+    const [playerName, setPlayerName] = useState(null);
 
     useEffect(() => {
         async function getScores () {
@@ -18,6 +19,13 @@ function Scoreboard (props) {
 
     function handleSubmit (e) {
         e.preventDefault();
+        const playerTime = props.time;
+        writeToScoreboard(playerName, playerTime);
+        e.target.setAttribute('disabled', true);
+    }
+
+    function handleChange (e) {
+        setPlayerName(e.target.value)
     }
 
     const ScoreCard = (props) => {
@@ -37,11 +45,11 @@ function Scoreboard (props) {
         <div className="scoreboard-container">
             <h1>You Win!</h1>
             <p>Time taken: {props.time} seconds</p>
-            <form onSubmit={handleSubmit}>
+            <form>
                 <label>
                     Your name:
-                    <input type='text' required />
-                    <button>Submit</button>
+                    <input onChange={handleChange} className="name-input" type='text' required />
+                    <button onClick={handleSubmit}>Submit</button>
                 </label>
             </form>
             <div className="scoreboard-list" >

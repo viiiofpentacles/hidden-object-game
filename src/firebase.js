@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import getConfig from "./getConfig";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
-import { getFirestore, doc, getDoc, getDocs, collection } from "firebase/firestore";
+import { getFirestore, doc, getDoc, getDocs, collection, addDoc } from "firebase/firestore";
 
 const config = getConfig ();
 const app = initializeApp(config);
@@ -37,4 +37,19 @@ async function retrieveScoreboard () {
   return scoresList;
 }
 
-export { retrieveImage, findCoords, retrieveScoreboard };
+async function writeToScoreboard (name, time) {
+  const playerName = name;
+  const playerTime = Number(time);
+
+  /* await setDoc(doc(db, 'scoreboard', name), {
+    name: playerName,
+    time: playerTime
+  }) */
+
+  await addDoc(collection(db, 'scoreboard'), {
+    name: playerName,
+    time: playerTime
+  });
+}
+
+export { retrieveImage, findCoords, retrieveScoreboard, writeToScoreboard };

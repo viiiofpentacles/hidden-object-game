@@ -4,7 +4,7 @@ import './styles/App.css';
 function App () {
   return (
     <div className='app-container'>
-      <nav>
+      <nav className='menu-container'>
         <Link to="/">Instructions</Link>
         <Link to="game">Play!</Link>
       </nav>

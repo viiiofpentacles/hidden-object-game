@@ -75,7 +75,9 @@ function Game () {
     }, [foundObjects])
 
     useEffect(() => {
-        const menuXcoord = currentCoords[0] + 50 + 'px';
+        const image = document.getElementById('loaded-image');
+        const imageCoords = image.getBoundingClientRect();
+        const menuXcoord = imageCoords.x + currentCoords[0] + 50 + 'px';
         const menuYCoord = currentCoords[1] - 50 + 'px';
         const selectionMenu = document.querySelector('.selection-menu');
         if (selectionMenu !== null) {
@@ -95,14 +97,14 @@ function Game () {
                 <div className="people-list">
                     Look for them:
                     <div className='people-container'>
-                        <div>
-                            Michelangelo
+                        <div className='mich-name'>
+                            <a href='https://en.wikipedia.org/wiki/The_Last_Judgment_(Michelangelo)#Inserted_self-portrait' target='_blank'>Michelangelo</a>
                         </div>
-                        <div>
-                            St Sebastian
+                        <div className='seb-name'>
+                            <a href='https://en.wikipedia.org/wiki/Saint_Sebastian' target='_blank'>St Sebastian</a>
                         </div>
-                        <div>
-                            <a href='https://en.wikipedia.org/wiki/Biagio_da_Cesena'>Minos</a>
+                        <div className='min-name'>
+                            <a href='https://en.wikipedia.org/wiki/Biagio_da_Cesena' target='_blank'>Minos</a>
                         </div>
                     </div>
                 </div>

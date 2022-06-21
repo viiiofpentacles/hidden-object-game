@@ -1,0 +1,35 @@
+.scoreboard-container {
+    text-align: center;
+}
+
+label {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    font-weight: 600;
+    align-items: center;
+    justify-content: center;
+}
+
+label input {
+    width: 8rem;
+    text-align: center;
+}
+
+label button {
+    margin-left: 1.2rem;
+    align-self: center;
+    width: 6rem;
+}
+
+.card-container {
+    padding-bottom: 1rem;
+}
+
+.ranking {
+    font-weight: 600;
+    font-size: 1.4rem;
+}
+
+.name-div {
+    font-size: 1.5rem;
+}

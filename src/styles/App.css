@@ -1,11 +1,87 @@
+.menu-container {
+    text-align: center;
+    padding: 1rem;
+    font-size: 1.5rem;
+}
+
+.menu-container a {
+    text-decoration: none;
+    padding: 0 0.5rem ;
+    color: rgb(94, 94, 94);
+}
+
+.menu-container a:hover {
+    background-color: rgb(153, 153, 153);
+    color: black;
+}
+
+h1 {
+    text-align: center;
+}
+
+p {
+    text-align: center;
+    padding: 0 0.5rem;
+}
+
+button {
+    border: none;
+    background-color: rgb(80, 80, 80);
+    color: white;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 6px;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: rgb(170, 170, 170);
+    color: rgb(58, 58, 58);
+}
+
+button:disabled {
+    color: grey;
+    cursor: not-allowed;
+}
+
+.game-div {
+    text-align: center;
+}
+
+.people-list {
+    padding-top: 1rem;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    justify-content: center;
+}
+
+.people-container {
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 5rem;
+}
+
+.people-container a {
+    text-decoration: none;
+    color: rgb(104, 104, 104);
+}
+
+.people-container a:hover {
+    text-decoration: underline;
+    color: rgb(53, 53, 53);
+}
+
 .image-container {
-    position: absolute;
-    left: 25%;
     pointer-events: none;
+    position: relative;
+    padding-bottom: 2rem;
 }
 
 .feedback-container {
-    height: 1.5rem;
+    height: 3rem;
+    font-size: 2rem;
 }
 
 .target-box {

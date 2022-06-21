@@ -1,6 +1,6 @@
 import { retrieveScoreboard, writeToScoreboard } from "./firebase";
 import { useState, useEffect } from 'react';
-
+import './styles/Scoreboard.css';
 
 function Scoreboard (props) {
     const [scoreboard, setScoreboard] = useState(null);
@@ -29,22 +29,25 @@ function Scoreboard (props) {
     }
 
     const ScoreCard = (props) => {
+        let rankIndex = props.rank + 1;
         return (
             <div className="card-container">
+                <div className="ranking">{rankIndex}</div>
                 <div className="name-div">{props.score.name}</div>
                 <div className="time-div">{props.score.time} seconds</div>
             </div>
         )
     }
 
-    const displayScoreboard = scoreboard?.map((score => {
-            return <ScoreCard score = {score} />
+    const displayScoreboard = scoreboard?.map(((score, index) => {
+            return <ScoreCard score = {score} rank = {index}/>
         }));
 
     return (
         <div className="scoreboard-container">
             <h1>You Win!</h1>
             <p>Time taken: {props.time} seconds</p>
+            <p>Enter your name and hit 'submit' to submit your score to the scoreboard.</p>
             <form>
                 <label>
                     Your name:
@@ -53,6 +56,7 @@ function Scoreboard (props) {
                 </label>
             </form>
             <div className="scoreboard-list" >
+                <h2>Scoreboard</h2>
                 {displayScoreboard}
             </div>
         </div>

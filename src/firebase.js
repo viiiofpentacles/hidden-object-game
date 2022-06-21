@@ -40,12 +40,6 @@ async function retrieveScoreboard () {
 async function writeToScoreboard (name, time) {
   const playerName = name;
   const playerTime = Number(time);
-
-  /* await setDoc(doc(db, 'scoreboard', name), {
-    name: playerName,
-    time: playerTime
-  }) */
-
   await addDoc(collection(db, 'scoreboard'), {
     name: playerName,
     time: playerTime

@@ -19,6 +19,15 @@ function SelectionMenu (props) {
         if (result === 'correct') {
             props.changeFoundObjectState(person);
             feedback.textContent = 'You found ' + person + '!';
+            let personDiv;
+            if (person === 'michelangelo') {
+                personDiv = document.querySelector('.mich-name');
+            } else if (person === 'st. sebastian') {
+                personDiv = document.querySelector('.seb-name');
+            } else {
+                personDiv = document.querySelector('.min-name');
+            }
+            personDiv.style.textDecoration = 'line-through';
         } else {
             feedback.textContent = 'That isn\'t ' + person + '!';
         }

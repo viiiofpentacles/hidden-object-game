@@ -6,7 +6,9 @@ function createTargetBox (x, y) {
     prevTargetBox.remove();
     };
     const targetBox = document.createElement('div');
-    targetBox.style.left = x - 20 + 'px';
+    const image = document.getElementById('loaded-image');
+    const imageCoords = image.getBoundingClientRect();
+    targetBox.style.left = imageCoords.left + x - 20 + 'px';
     targetBox.style.top = y - 35 + 'px';
     targetBox.classList.add('target-box');
     const imageContainer = document.querySelector('.image-container');

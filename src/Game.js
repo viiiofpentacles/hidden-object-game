@@ -98,13 +98,13 @@ function Game () {
                     Look for them:
                     <div className='people-container'>
                         <div className='mich-name'>
-                            <a href='https://en.wikipedia.org/wiki/The_Last_Judgment_(Michelangelo)#Inserted_self-portrait' target='_blank'>Michelangelo</a>
+                            <a href='https://en.wikipedia.org/wiki/The_Last_Judgment_(Michelangelo)#Inserted_self-portrait' target='_blank' rel='noopener noreferrer'>Michelangelo</a>
                         </div>
                         <div className='seb-name'>
-                            <a href='https://en.wikipedia.org/wiki/Saint_Sebastian' target='_blank'>St Sebastian</a>
+                            <a href='https://en.wikipedia.org/wiki/Saint_Sebastian' target='_blank' rel='noopener noreferrer'>St Sebastian</a>
                         </div>
                         <div className='min-name'>
-                            <a href='https://en.wikipedia.org/wiki/Biagio_da_Cesena' target='_blank'>Minos</a>
+                            <a href='https://en.wikipedia.org/wiki/Biagio_da_Cesena' target='_blank' rel='noopener noreferrer'>Minos</a>
                         </div>
                     </div>
                 </div>

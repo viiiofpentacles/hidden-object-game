@@ -5,7 +5,7 @@ import Game from './Game';
 
 const RouteSwitcher = () => {
     return (
-        <BrowserRouter>
+        <BrowserRouter basename='/hidden-object-game'>
           <Routes>
               <Route path="/" element={<App />}>
                   <Route index element={<Instructions />} />

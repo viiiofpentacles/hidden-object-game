@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/hidden-object-game/static/css/main.cd9c3b85.css",
-    "main.js": "/hidden-object-game/static/js/main.badb72b9.js",
+    "main.js": "/hidden-object-game/static/js/main.2e1fb315.js",
     "index.html": "/hidden-object-game/index.html",
     "main.cd9c3b85.css.map": "/hidden-object-game/static/css/main.cd9c3b85.css.map",
-    "main.badb72b9.js.map": "/hidden-object-game/static/js/main.badb72b9.js.map"
+    "main.2e1fb315.js.map": "/hidden-object-game/static/js/main.2e1fb315.js.map"
   },
   "entrypoints": [
     "static/css/main.cd9c3b85.css",
-    "static/js/main.badb72b9.js"
+    "static/js/main.2e1fb315.js"
   ]
 }

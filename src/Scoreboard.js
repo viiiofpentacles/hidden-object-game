@@ -1,26 +1,45 @@
 import { retrieveScoreboard, writeToScoreboard } from "./firebase";
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './styles/Scoreboard.css';
 
 function Scoreboard (props) {
     const [scoreboard, setScoreboard] = useState(null);
     const [playerName, setPlayerName] = useState(null);
+    let scoreboardFromFirestore = useRef(null); //used to reduce number of reads to firestore
 
-    useEffect(() => {
-        async function getScores () {
-            const scores = await retrieveScoreboard();
-            scores.sort(function(a, b) {
+    function sortScoreboard (scoreboardArray) {
+        if (scoreboardArray) {
+            scoreboardArray.sort(function(a, b) {
                 return a.time - b.time;
             });
-            setScoreboard(scores);
         }
+        return scoreboardArray;
+    }
+
+    useEffect(() => {
+        if (scoreboardFromFirestore.current === null) {
+            async function getScores () {
+                const scores = await retrieveScoreboard();
+                sortScoreboard(scores);
+                scoreboardFromFirestore.current = scores;
+                setScoreboard(scores);
+            }
         getScores();
-    }, [scoreboard])
+        }
+    }, [])
 
     function handleSubmit (e) {
         e.preventDefault();
         const playerTime = props.time;
         writeToScoreboard(playerName, playerTime);
+        const newScore = {
+            name: playerName,
+            time: playerTime
+        }
+        const updatedScoreboard = scoreboard.concat(newScore);
+        sortScoreboard(updatedScoreboard);
+        scoreboardFromFirestore.current = updatedScoreboard;
+        setScoreboard(updatedScoreboard);
         e.target.setAttribute('disabled', true);
     }
 
@@ -40,8 +59,8 @@ function Scoreboard (props) {
     }
 
     const displayScoreboard = scoreboard?.map(((score, index) => {
-            return <ScoreCard score = {score} rank = {index}/>
-        }));
+            return <ScoreCard score = {score} rank = {index} key = {index} />
+    }));
 
     return (
         <div className="scoreboard-container">
